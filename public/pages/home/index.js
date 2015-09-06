@@ -1,4 +1,4 @@
-define([], function() {
+define(['less!./index'], function() {
 
     var routes = {
         '/':homehandler,

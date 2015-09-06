@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Express</title>
+    <title>Inact Studio</title>
     <script>
     document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js"></' + 'script>')
     </script>
 </head>
-<body>
+<body data-main="home">
     <h1>Homepage</h1>
+    <a href="#/products" class="test">products</a>
 </body>
+<script type="text/javascript" src="packages/requirejs/require.js" data-main="common/config"></script>
 </html>

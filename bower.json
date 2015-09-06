@@ -1,0 +1,22 @@
+{
+  "name": "inact-homepage",
+  "version": "0.0.1",
+  "homepage": "https://github.com/eizia/homepage",
+  "authors": [
+    "kevin14 <kevin14@me.com>"
+  ],
+  "description": "inact-homepage",
+  "main": "app.js",
+  "keywords": [
+    "inact",
+    "homepage"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

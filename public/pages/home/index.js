@@ -1,46 +1,18 @@
-define(['less!./index'], function() {
+define(['./product/main','./case/main','./customer/main','./aboutus/main','less!./index'], function(Product,Case,Customer,Aboutus) {
 
     var routes = {
         '/':homehandler,
-        '/product': productHomeHandler,
-        '/product/:productName': productDetailHandler,
-        '/case':caseHomeHandler,
-        '/case/:caseName':caseDetailHandler,
-        '/customer':customerHomeHandler,
-        '/customer/:customerName':customerDetailHandler,
-        '/aboutus':aboutusHandler
+        '/product': Product.productHomeHandler,
+        '/product/:productName': Product.productDetailHandler,
+        '/case':Case.caseHomeHandler,
+        '/case/:caseName':Case.caseDetailHandler,
+        '/customer':Customer.customerHomeHandler,
+        '/customer/:customerName':Customer.customerDetailHandler,
+        '/aboutus':Aboutus.aboutusHandler
     };
 
     function homehandler(){
     	console.log('this is home!')
-    }
-
-    function productHomeHandler() {
-        console.log('product!');
-    }
-
-    function productDetailHandler(productName) {
-        console.log('product name is:'+productName);
-    }
-
-    function caseHomeHandler() {
-        console.log('case!');
-    }
-
-    function caseDetailHandler(caseName) {
-        console.log('case name is:'+caseName);
-    }
-
-    function customerHomeHandler() {
-        console.log('customer!');
-    }
-
-    function customerDetailHandler(caseName) {
-        console.log('customer name is:'+caseName);
-    }
-
-    function aboutusHandler() {
-        console.log('aboutus!');
     }
 
     var router = Router(routes);

@@ -1,3 +1,55 @@
-body{
-	background-color: #fff;
+@import '../../common/less/base.less';
+@import '../../common/less/common.less';
+
+body {
+    background-color: #333;
+    font-family: 'hanyi';
+}
+
+.logo {
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    margin-top: -7.4rem;
+    width: 100%;
+    .transition(all 2000ms);
+    svg {
+        height: 6.4rem;
+        width: 5rem;
+        display: inline-block;
+        opacity: 0;
+    }
+    #t {
+        height: 7.8rem;
+    }
+    #a {
+        width: 6.4rem;
+    }
+    #i {
+        width: 2.6rem;
+        margin-right: 1rem;
+    }
+    &.locate{
+    	.translate3d(0,-50px,0);
+    }
+}
+
+.menu{
+	position: fixed;
+	top: 60%;
+	width: 100%;
+	text-align: center;
+	opacity: 0;
+	.transition(all 2000ms);
+	.menuBtn{
+		margin: 0 2rem;
+		display: inline-block;
+		color: #fff;
+		font-size: 2rem;
+		text-decoration: none;
+	}
+	&.locate{
+		opacity: 1 !important;
+		.translate3d(0,-50px,0);
+	}
 }

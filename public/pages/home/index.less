@@ -1,55 +1,81 @@
 @import '../../common/less/base.less';
 @import '../../common/less/common.less';
+@fontColor:#81849D;
 
 body {
-    background-color: #333;
     font-family: 'hanyi';
 }
 
-.logo {
-    text-align: center;
+.mainVideoBg{
     position: fixed;
-    top: 50%;
-    margin-top: -7.4rem;
     width: 100%;
-    .transition(all 2000ms);
-    svg {
-        height: 6.4rem;
-        width: 5rem;
-        display: inline-block;
+    height: 100%;
+    left: 0;
+    background-image: url(/resource/image/bg_b.jpg);
+    background-size: auto 100%;
+    background-position: center;
+    top: 0;
+}
+.logo{
+    display: block;
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    z-index: 10;
+    svg{
+        width: 12.8rem;
+        height: 4rem;
+    }
+}
+.guide{
+    position: fixed;
+    left: 1rem;
+    top: 6rem;
+    color: #fff;
+    display: inline-block;
+}
+#home {
+    z-index: 1;
+    //background: url('/pages/home/image/bg_main.jpg') center center;
+    //background-size: contain;
+    .menu {
+        position: fixed;
+        top: 80%;
+        width: 100%;
+        text-align: center;
         opacity: 0;
-    }
-    #t {
-        height: 7.8rem;
-    }
-    #a {
-        width: 6.4rem;
-    }
-    #i {
-        width: 2.6rem;
-        margin-right: 1rem;
-    }
-    &.locate{
-    	.translate3d(0,-50px,0);
+        .transition(all 2000ms);
+        .menuBtn {
+            margin: 0 1.7rem;
+            width: 7.4rem;
+            display: inline-block;
+            font-size: 2.4rem;
+            text-decoration: none;
+            color: @fontColor;
+            text-align: center;
+            .icon{
+                width: 100%;
+                height: 7.4rem;
+                display: inline-block;
+                border: 1px solid @fontColor;
+            }
+        }
+        &.locate {
+            opacity: 1 !important;
+            .translate3d(0, -50px, 0);
+        }
     }
 }
 
-.menu{
-	position: fixed;
-	top: 60%;
-	width: 100%;
-	text-align: center;
-	opacity: 0;
-	.transition(all 2000ms);
-	.menuBtn{
-		margin: 0 2rem;
-		display: inline-block;
-		color: #fff;
-		font-size: 2rem;
-		text-decoration: none;
-	}
-	&.locate{
-		opacity: 1 !important;
-		.translate3d(0,-50px,0);
-	}
+.module {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    //background-color: #fff;
+    z-index: -1;
+    opacity: 0;
+    &.show{
+        opacity: 1;
+        z-index: 2;
+    }
 }

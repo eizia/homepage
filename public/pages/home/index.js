@@ -16,15 +16,12 @@ define(['./product/main', './case/main', './customer/main', './aboutus/main', 'l
         $('#home').addClass('show');
         $('.guide').html('');
         //mainVideoBg控制视频
-        $('.mainVideoBg').css({
-            'background-image':'url(/resource/image/bg_b.jpg)'
-        })
+        
     }
 
-
-    setTimeout(function(){
-        $('.logo,.menu').addClass('locate');
-    },2000);
+    // loading 结束后
+    $('.mainVideo')[0].play();
+    $('.logo,.menu').addClass('locate');
 
     var router = Router(routes);
     router.init();

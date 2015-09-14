@@ -4,9 +4,10 @@ define(['less!./case.less'], function() {
             $('.guide').html('案例');
             $('.module').removeClass('show');
             $('#case').addClass('show');
-            $('.mainVideoBg').css({
-                'background-image': 'url(/resource/image/bg_a.jpg)'
-            })
+
+            //替换视频并且开始播放
+            $('.mainVideo').attr('src','/resource/video/enter.mp4');
+            $('.mainVideo')[0].play();
         },
         caseDetailHandler: function(caseName) {
             console.log('case name is:' + caseName);

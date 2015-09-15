@@ -11,19 +11,18 @@ define(['./product/main', './case/main', './customer/main', './aboutus/main', 'l
         '/aboutus': Aboutus.aboutusHandler
     };
 
-    var video = document.querySelector('.mainVideo');
+    var video = document.querySelector('.mainVideo.enter');
 
     function homeHandler() {
         $('.module').removeClass('show');
         $('#home').addClass('show');
         $('.guide').html('');
         //mainVideoBg控制视频
-
+        playBack();
     }
-
     function playBack(){
         if (video.currentTime > 0 ) {
-            video.currentTime -= 1;
+            video.currentTime -= 0.017;
             requestAnimationFrame(playBack);
         };
     }

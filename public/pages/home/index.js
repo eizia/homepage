@@ -22,7 +22,7 @@ define(['./product/main', './case/main', './customer/main', './aboutus/main', 'l
     }
     function playBack(){
         if (video.currentTime > 0 ) {
-            video.currentTime -= 0.017;
+            video.currentTime -= 0.012;
             requestAnimationFrame(playBack);
         };
     }

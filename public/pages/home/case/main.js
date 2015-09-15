@@ -2,7 +2,8 @@ define(['less!./case.less'], function() {
     var video = document.querySelector('.mainVideo.enter');
     return {
         caseHomeHandler: function() {
-            $('.guide').html('案例');
+            $('.guideBtn').html('案例').attr('href','/#case');
+            $('.subGuideBtn').html('');
             $('.module').removeClass('show');
             $('#case').addClass('show');
             $('.mainVideo.landing').remove();

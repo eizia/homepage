@@ -2,7 +2,7 @@ define(['less!./customer.less'], function() {
     var video = document.querySelector('.mainVideo.enter');
     return {
         customerHomeHandler: function() {
-            $('.guide').html('客户');
+            $('.guideBtn').html('客户').attr('href','/#customer');
             $('.module').removeClass('show');
             $('#customer').addClass('show');
             $('.mainVideo.landing').remove();

@@ -2,7 +2,7 @@ define(['less!./aboutus.less'], function() {
     var video = document.querySelector('.mainVideo.enter');
     return {
         aboutusHandler: function() {
-            $('.guide').html('我们');
+            $('.guideBtn').html('我们').attr('href','/#aboutus');
             $('.module').removeClass('show');
             $('#aboutus').addClass('show');
             $('.mainVideo.landing').remove();

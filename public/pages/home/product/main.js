@@ -2,7 +2,7 @@ define(['less!./product.less'], function() {
     var video = document.querySelector('.mainVideo.enter');
     return {
         productHomeHandler: function() {
-        	$('.guide').html('产品');
+        	$('.guideBtn').html('产品').attr('href','/#product');
             $('.module').removeClass('show');
             $('#product').addClass('show');
             $('.mainVideo.landing').remove();

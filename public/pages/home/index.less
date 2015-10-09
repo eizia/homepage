@@ -160,23 +160,68 @@ nav.global{
 .module {
     position: fixed;
     width: 1000px;
-    height: 500px;
     left: 50%;
     margin-left: -500px;
-    top: 20%;
+    top: 35%;
+    bottom:0;
     z-index: -1;
     opacity: 0;
-    .transition(all 1000ms);
-    .translate3d(0,100px,0);
     &#home{
         .translate3d(0,0,0);
     }
     &.show{
         opacity: 1;
-        .translate3d(0,0,0);
         z-index: 2;
     }
     .list{
 
+    }
+}
+
+.cardContainer{
+    .card{
+        margin: 3rem auto;
+    }
+
+}
+.card{
+    width: 600px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0px 1px 2px #000, 0px 10px 20px rgba(0,0,0,0.3), 0px 20px 40px rgba(0,0,0,0.3);
+
+    .bg{
+        height: 330px;
+        background-size: cover;
+        background-position: center center;
+        position: absolute;
+        width: 660px;
+        left: 50%;
+        margin-left: -330px;
+        top: 50%;
+        margin-top: -165px;
+    }
+    .dark{
+        height: 100%;
+        width: 100%;
+        background-image: radial-gradient(ellipse farthest-corner at center center , rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.7) 100%);
+        position: absolute;
+    }
+    .light{
+        height: 100%;
+        width: 100%;
+        background-image: radial-gradient(ellipse farthest-corner at center 30% , rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%);
+        position: absolute;
+    }
+    .float{
+        position: absolute;
+        width: 300px;
+        height: 100px;
+        left: 50%;
+        margin-left: -150px;
+        top: 50%;
+        margin-top: -50px;
     }
 }

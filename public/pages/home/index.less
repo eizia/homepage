@@ -190,7 +190,13 @@ nav.global{
     overflow: hidden;
     border-radius: 10px;
     position: relative;
-    box-shadow: 0px 1px 2px #000, 0px 10px 20px rgba(0,0,0,0.3), 0px 20px 40px rgba(0,0,0,0.3);
+    opacity: 0;
+    .transition(~'box-shadow 600ms, opacity 300ms');
+
+    &.show{
+        opacity: 1;
+        box-shadow: 0px 1px 2px #000, 0px 10px 20px rgba(0,0,0,0.3), 0px 20px 40px rgba(0,0,0,0.3);
+    }
 
     .bg{
         height: 330px;

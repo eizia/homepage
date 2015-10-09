@@ -1,4 +1,4 @@
-define(['less!./case.less'], function() {
+define(['../scene', 'less!./case.less'], function(Scene) {
     var video = document.querySelector('.mainVideo.enter');
 
 
@@ -13,9 +13,8 @@ define(['less!./case.less'], function() {
             $('.subGuideBtn').html('');
             $('.module').removeClass('show');
             $('#case').addClass('show');
-            $('.mainVideo.landing').remove();
-            //替换视频并且开始播放
-            video.play();
+            
+            Scene.set("channel")
 
             showCases();
         },

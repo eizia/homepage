@@ -5,7 +5,7 @@ define(['less!./customer.less'], function() {
             $('.guideBtn').html('客户').attr('href','/#customer');
             $('.module').removeClass('show');
             $('#customer').addClass('show');
-            $('.mainVideo.landing').remove();
+            $('.mainVideo.landing').addClass("hide");
             //替换视频并且开始播放
             video.play();
         },

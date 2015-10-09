@@ -1,4 +1,4 @@
-define(['./product/main', './case/main', './customer/main', './aboutus/main', 'less!./index'], function(Product, Case, Customer, Aboutus) {
+define(['when', './product/main', './case/main', './customer/main', './aboutus/main', './scene', './title', 'less!./index'], function(when, Product, Case, Customer, Aboutus, Scene, Title) {
 
     var routes = {
         '': homeHandler,
@@ -11,26 +11,41 @@ define(['./product/main', './case/main', './customer/main', './aboutus/main', 'l
         'aboutus': Aboutus.aboutusHandler
     };
 
-    var video = document.querySelector('.mainVideo.enter');
 
     function homeHandler() {
-        $('.module').removeClass('show');
-        $('#home').addClass('show');
-        $('.guideBtn').html('');
-        $('.subGuideBtn').html('');
+        // $('.module').removeClass('show');
+        // $('#home').addClass('show');
+        // $('.guideBtn').html('');
+        // $('.subGuideBtn').html('');
         //mainVideoBg控制视频
-        playBack();
+        // Scene.set("home")
     }
-    function playBack(){
-        if (video.currentTime > 0 ) {
-            video.currentTime -= 0.012;
-            requestAnimationFrame(playBack);
-        };
-    }
+    
 
-    // loading 结束后
-    $('.mainVideo')[0].play();
-    $('.logo,.menu').addClass('locate');
+    when.all([Scene.loaded, when().delay(1000)])
+        .then(function(){
+
+            Scene.set("home")
+                .progress(function(){
+
+                    console.info("start to home")
+
+                    $('.gCover').addClass('hide');
+                    $('nav.global').addClass('show');
+                    $('.logo,.menu').addClass('locate');
+                })
+                .then(function(){
+
+                    console.info("in home")
+
+                });
+
+
+        })
+
+
+
+
 
     var router = Router(routes);
     router.init();

@@ -1,13 +1,15 @@
-define(['less!./product.less'], function() {
-    var video = document.querySelector('.mainVideo.enter');
+define(['../scene', '../title', 'less!./product.less'], function(Scene, Title) {
     return {
         productHomeHandler: function() {
-        	$('.guideBtn').html('产品').attr('href','/#product');
             $('.module').removeClass('show');
             $('#product').addClass('show');
             $('.mainVideo.landing').addClass("hide");
+
+            Scene.set("channel")
+            Title.set([
+                {text: '产品'}
+            ]);
             //替换视频并且开始播放
-            video.play();
         },
         productDetailHandler: function(productName) {
             console.log('product name is:' + productName);

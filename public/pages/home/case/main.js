@@ -1,5 +1,4 @@
 define(['../scene', 'less!./case.less'], function(Scene) {
-    var video = document.querySelector('.mainVideo.enter');
 
 
     function showCases(){

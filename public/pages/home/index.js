@@ -13,12 +13,11 @@ define(['when', './product/main', './case/main', './customer/main', './aboutus/m
 
 
     function homeHandler() {
-        // $('.module').removeClass('show');
-        // $('#home').addClass('show');
-        // $('.guideBtn').html('');
-        // $('.subGuideBtn').html('');
+        $('.module').removeClass('show');
+        $('#home').addClass('show');
         //mainVideoBg控制视频
-        // Scene.set("home")
+        Scene.set("home")
+        Title.set([]);
     }
     
 

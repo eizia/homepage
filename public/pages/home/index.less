@@ -125,14 +125,13 @@ nav.global{
     }
 }
 #home {
-    z-index: 1;
+    top:70%;
     .menu {
         top: 80%;
         width: 100%;
         text-align: center;
         position: relative;
-        opacity: 0;
-        .transition(all 2000ms);
+        opacity: 1;
         .menuBtn {
             margin: 0 1.7rem;
             width: 7.4rem;
@@ -142,6 +141,19 @@ nav.global{
             color: @fontColor;
             text-align: center;
             font-weight: bold;
+            opacity: 0;
+            &:nth-child(1){
+                .transition(opacity 500ms );
+            }
+            &:nth-child(2){
+                .transition(opacity 500ms 100ms);
+            }
+            &:nth-child(3){
+                .transition(opacity 500ms 200ms);
+            }
+            &:nth-child(4){
+                .transition(opacity 500ms 300ms);
+            }
             .icon{
                 width: 100%;
                 height: 5.4rem;
@@ -150,84 +162,92 @@ nav.global{
                 font-weight: normal;
             }
         }
-        &.locate {
-            opacity: 1 !important;
-            .translate3d(0, -50px, 0);
+        &.locate .menuBtn{
+            opacity:1;
         }
     }
 }
 
 .module {
     position: fixed;
-    width: 1000px;
+    width: 10000px;
     left: 50%;
-    margin-left: -500px;
+    margin-left: -5000px;
     top: 35%;
     bottom:0;
-    z-index: -1;
-    opacity: 0;
-    &#home{
-        .translate3d(0,0,0);
-    }
+    visibility: hidden;
+    pointer-events: none;
     &.show{
-        opacity: 1;
-        z-index: 2;
-    }
-    .list{
-
+        visibility:visible;
+        pointer-events: all;
     }
 }
 
 .cardContainer{
-    .card{
-        margin: 3rem auto;
-    }
-
-}
-.card{
-    width: 600px;
-    height: 300px;
+    width: 700px;
+    margin: 0 auto;
+    height: 0px;
+    top:400px;
     overflow: hidden;
-    border-radius: 10px;
-    position: relative;
-    opacity: 0;
-    .transition(~'box-shadow 600ms, opacity 300ms');
-
-    &.show{
+    -ms-transition:-ms-transform 500ms, height 500ms;
+    -webkit-transition:-webkit-transform 500ms, height 500ms;
+    transition:transform 500ms, height 500ms;
+    .translate3d(0px, 400px, 0px);
+    .card{
+        -ms-transition:-ms-transform 500ms;
+        -webkit-transition:-webkit-transform 500ms;
+        transition:transform 500ms;
+        display: block;
+        width: 600px;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 10px;
+        position: relative;
         opacity: 1;
+        margin: 5rem auto;
         box-shadow: 0px 1px 2px #000, 0px 10px 20px rgba(0,0,0,0.3), 0px 20px 40px rgba(0,0,0,0.3);
-    }
+        .rotate(10deg);
 
-    .bg{
-        height: 330px;
-        background-size: cover;
-        background-position: center center;
-        position: absolute;
-        width: 660px;
-        left: 50%;
-        margin-left: -330px;
-        top: 50%;
-        margin-top: -165px;
+        .bg{
+            height: 330px;
+            background-size: cover;
+            background-position: center center;
+            position: absolute;
+            width: 660px;
+            left: 50%;
+            margin-left: -330px;
+            top: 50%;
+            margin-top: -165px;
+        }
+        .dark{
+            height: 100%;
+            width: 100%;
+            background-image: radial-gradient(ellipse farthest-corner at center center , rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.7) 100%);
+            position: absolute;
+        }
+        .light{
+            height: 100%;
+            width: 100%;
+            background-image: radial-gradient(ellipse farthest-corner at center 30% , rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%);
+            position: absolute;
+        }
+        .float{
+            position: absolute;
+            width: 300px;
+            height: 100px;
+            left: 50%;
+            margin-left: -150px;
+            top: 50%;
+            margin-top: -50px;
+        }
     }
-    .dark{
-        height: 100%;
-        width: 100%;
-        background-image: radial-gradient(ellipse farthest-corner at center center , rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.7) 100%);
-        position: absolute;
-    }
-    .light{
-        height: 100%;
-        width: 100%;
-        background-image: radial-gradient(ellipse farthest-corner at center 30% , rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%);
-        position: absolute;
-    }
-    .float{
-        position: absolute;
-        width: 300px;
-        height: 100px;
-        left: 50%;
-        margin-left: -150px;
-        top: 50%;
-        margin-top: -50px;
-    }
+    &.show{
+        .translate3d(0px, 0px, 0px);
+        height: 400px;
+        .card{
+
+            .rotate(0deg);
+        }
+    } 
 }
+

@@ -7,7 +7,7 @@ define(['../scene', 'less!./case.less'], function(Scene) {
     }
 
     return {
-        caseHomeHandler: function() {
+        caseHandler: function() {
             $('.guideBtn').html('案例').attr('href','/#case');
             $('.subGuideBtn').html('');
             $('.module').removeClass('show');

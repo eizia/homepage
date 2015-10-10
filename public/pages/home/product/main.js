@@ -1,18 +1,28 @@
 define(['../scene', '../title', 'less!./product.less'], function(Scene, Title) {
-    return {
-        productHomeHandler: function() {
-            $('.module').removeClass('show');
-            $('#product').addClass('show');
-            $('.mainVideo.landing').addClass("hide");
 
-            Scene.set("channel")
+    var allProduct = Array.prototype.slice.call(document.querySelectorAll("#product .cardContainer"));
+    var $product = $("#product")
+
+    return {
+        productHandler: function() {
+            $product.addClass("show")
+            allProduct.forEach(function(card){
+                $(card).addClass("show")
+            })
+
             Title.set([
                 {text: '产品'}
             ]);
-            //替换视频并且开始播放
+            return Scene.set("channel")
+
         },
-        productDetailHandler: function(productName) {
-            console.log('product name is:' + productName);
+        productExitHandler:function(){
+            allProduct.forEach(function(card){
+                $(card).removeClass("show")
+            })
+            setTimeout(function(){
+                $product.removeClass("show")
+            }, 500)
         }
     }
 })

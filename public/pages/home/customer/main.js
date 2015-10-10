@@ -1,10 +1,23 @@
-define(['less!./customer.less'], function() {
+define(['when', '../scene', '../title', 'less!./customer.less'], function(when, Scene, Title) {
+    var $customer = $("#customer")
+    var $allCustomers = $(".customer")
     return {
         customerHandler: function() {
-            $('.guideBtn').html('客户').attr('href','/#customer');
-            $('.module').removeClass('show');
-            $('#customer').addClass('show');
-            $('.mainVideo.landing').addClass("hide");
+            $customer.addClass("show")
+            $allCustomers.addClass("show");
+            Title.set([
+                {text: '客户'}
+            ]);
+            return Scene.set("channel")
+
+        },
+        customerExitHandler:function(){
+            $allCustomers.removeClass("show");
+            return when().delay(300).then(function(){
+            	setTimeout(function(){
+            		$customer.removeClass("show");
+            	}, 300)
+            })
         }
     }
 })

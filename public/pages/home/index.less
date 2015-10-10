@@ -193,10 +193,18 @@ nav.global{
     -webkit-transition:-webkit-transform 500ms, height 500ms;
     transition:transform 500ms, height 500ms;
     .translate3d(0px, 400px, 0px);
-    .card{
+    .rotateZ{
+        display: block;
         -ms-transition:-ms-transform 500ms;
         -webkit-transition:-webkit-transform 500ms;
         transition:transform 500ms;
+        -ms-transform:rotateZ(10deg);
+        -webkit-transform:rotateZ(10deg);
+        transform:rotateZ(10deg);
+        perspective:1000px;
+        transform-style: preserve-3d;
+    }
+    .card{
         display: block;
         width: 600px;
         height: 300px;
@@ -205,30 +213,39 @@ nav.global{
         position: relative;
         opacity: 1;
         margin: 5rem auto;
-        box-shadow: 0px 1px 2px #000, 0px 10px 20px rgba(0,0,0,0.3), 0px 20px 40px rgba(0,0,0,0.3);
-        .rotate(10deg);
-
+        transform-style: preserve-3d;
         .bg{
-            height: 330px;
             background-size: cover;
             background-position: center center;
             position: absolute;
             width: 660px;
+            height: 340px;
             left: 50%;
-            margin-left: -330px;
             top: 50%;
-            margin-top: -165px;
+            margin-top: -170px;
+            margin-left: -330px;
+
+            -ms-transform:translate3d(0,0,-10px);
+            -webkit-transform:translate3d(0,0,-10px);
+            transform:translate3d(0,0,-10px);
         }
         .dark{
-            height: 100%;
-            width: 100%;
+            width: 660px;
+            height: 340px;
+            left: 50%;
+            top: 50%;
+            margin-top: -170px;
+            margin-left: -330px;
             background-image: radial-gradient(ellipse farthest-corner at center center , rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.7) 100%);
             position: absolute;
+            -ms-transform:translate3d(0,0,-10px);
+            -webkit-transform:translate3d(0,0,-10px);
+            transform:translate3d(0,0,-10px);
         }
         .light{
             height: 100%;
             width: 100%;
-            background-image: radial-gradient(ellipse farthest-corner at center 30% , rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%);
+            background-image: radial-gradient(ellipse closest-side at center center , rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
             position: absolute;
         }
         .float{
@@ -239,15 +256,38 @@ nav.global{
             margin-left: -150px;
             top: 50%;
             margin-top: -50px;
+            -ms-transform:translate3d(0,0,100px);
+            -webkit-transform:translate3d(0,0,100px);
+            transform:translate3d(0,0,100px);
         }
+    }
+    .area{
+        display: block;
+        width: 600px;
+        height: 300px;
+        margin: 5rem;
+        position: absolute;
+        top: 0;
+    }
+    .shadow{
+        height: 280px;
+        width: 580px;
+        left: 50%;
+        top: 50%;
+        border-radius: 10px;
+        margin-top: -140px;
+        margin-left: -290px;
+        position: absolute;
+        box-shadow: 0px 1px 2px #000000, 0px 20px 20px rgba(0, 0, 0, 0.3), 0px 20px 40px rgba(0, 0, 0, 0.3);
     }
     &.show{
         .translate3d(0px, 0px, 0px);
         height: 400px;
-        .card{
-
-            .rotate(0deg);
+        .rotateZ{
+            -ms-transform:rotateZ(0deg);
+            -webkit-transform:rotateZ(0deg);
+            transform:rotateZ(0deg);
         }
-    } 
+    }
 }
 

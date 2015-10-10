@@ -3,7 +3,8 @@ require.config({
     waitSeconds: 0,
     paths: {
         'director' : 'packages/director/build/director.min',
-        'jquery' : 'packages/jquery/dist/jquery.min'
+        'jquery' : 'packages/jquery/dist/jquery.min',
+        'velocity' : 'packages/velocity/velocity.min'
     },
     packages:[
         {
@@ -17,10 +18,13 @@ require.config({
             'less': 'packages/require-less/less' // path to less
         }
     },
-    deps: ['jquery', 'director', 'when'],
+    deps: ['jquery', 'director', 'when', 'velocity'],
     shim: {
         'jquery': {
             'exports': 'jQuery'
+        },
+        "velocity": {
+            deps: [ "jquery" ]
         }
     }
 });

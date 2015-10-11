@@ -181,5 +181,53 @@ nav.global{
         visibility:visible;
         pointer-events: all;
     }
+
+    .topic{
+        position: absolute;
+        top: -53.8%;
+        height: 53.8%;
+        width: 10000px;
+        opacity: 0;
+        text-align: center;
+        font-size: 18px;
+        .transition(opacity 300ms);
+        &.show{
+            opacity: 1;
+        }
+
+        .container{
+            color: #fff;
+            display: inline-block;
+            max-width: 520px;
+            margin: 150px auto 0 auto;
+            position: relative;
+
+            &:before{
+                color: #EBEBEB;
+                content: "“";
+                display: block;
+                text-align: left;
+                font-size: 6rem;
+                height: 5rem;
+                position: absolute;
+                font-family: Georgia,Helvetica Neue,Helvetica,Arial;
+                top: -3rem;
+                left: -3rem;
+            }
+            &:after{
+                color: #EBEBEB;
+                content: "”";
+                display: block;
+                text-align: left;
+                font-size: 6rem;
+                height: 5rem;
+                position: absolute;
+                font-family: Georgia,Helvetica Neue,Helvetica,Arial;
+                bottom: -4rem;
+                right: -3rem;
+            }
+        }
+    }
+
 }
 

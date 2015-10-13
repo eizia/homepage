@@ -3,13 +3,24 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "http-server public"
+    "start": "http-server public -c-1"
   },
   "dependencies": {
     "body-parser": "~1.0.0",
     "cookie-parser": "~1.0.1",
     "debug": "~0.7.4",
     "express": "~4.0.0",
+    "grunt": "~0.4.2",
+    "grunt-cli": "~0.1.9",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-cssmin": "~0.5.0",
+    "grunt-contrib-jshint": "~0.3.0",
+    "grunt-contrib-less": "~0.10.0",
+    "grunt-contrib-requirejs": "~0.4.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-processhtml": "~0.3.8",
+    "less": "1.7.0",
     "express-livereload": "0.0.24",
     "jade": "~1.3.0",
     "morgan": "~1.0.0",

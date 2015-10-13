@@ -6,7 +6,8 @@ node_modules/
 /.idea/
 /builtAssets/
 
-
+**/*.built.js
+**/*.built.min.js
 
 *.out
 *.swp

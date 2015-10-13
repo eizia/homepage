@@ -6,6 +6,9 @@ define(['../scene', '../title', 'less!./product.less'], function(Scene, Title) {
 
     $allProduct.each(function(index, elem){
         var $elem = $(elem);
+        var animating = false;
+        var latestX = 0;
+        var latestY = 0;
 
         var $light = $elem.find(".light");
         var $float = $elem.find(".float");
@@ -17,31 +20,47 @@ define(['../scene', '../title', 'less!./product.less'], function(Scene, Title) {
         var $area = $elem.find(".area");
         var width = $area.width();
         var height = $area.height();
-        $area.mousemove(function(event){
-            var valueX = 2 * event.offsetX / width - 1
-            var valueY = 2 * event.offsetY / height - 1
-            //console.log(valueX, valueY)
-            // $bg.velocity('stop');
+
+
+        function transform(valueX, valueY, animation, fn){
+            var duration = animation ? animation : 0;
             $bg.velocity('stop').velocity({
                 translateX : -valueX * 20 + "px",
                 translateY : -valueY * 20 + "px"
-            }, 0)
+            }, duration, "ease-in-out")
             $light.velocity('stop').velocity({
                 translateX : -valueX * 400 + "px",
                 translateY : -valueY * 200 + "px"
-            }, 0)
+            }, duration, "ease-in-out")
             $shadow.velocity('stop').velocity({
                 translateX : -valueX * 10 + "px",
                 translateY : -valueY * 10 + "px"
-            }, 0)
+            }, duration, "ease-in-out")
             $float.velocity('stop').velocity({
                 translateX : valueX * 8 + "px",
                 translateY : valueY * 8 + "px"
-            }, 0)
+            }, duration, "ease-in-out")
             $rotateXY.velocity('stop').velocity({
                 rotateY : valueX * 8 + "deg",
                 rotateX : -valueY * 8 + "deg"
-            }, 0)
+            }, duration, "ease-in-out", fn)
+        }
+
+
+        $area.mousemove(function(event){
+            var valueX = 2 * event.offsetX / width - 1
+            var valueY = 2 * event.offsetY / height - 1
+            //如果变化过大，缩小value的数值，避免跳动
+            valueX = Math.abs(valueX - latestX) > 0.3 ? ((valueX - latestX)*0.3 + latestX) : valueX;
+            valueY = Math.abs(valueY - latestY) > 0.3 ? ((valueY - latestY)*0.3 + latestY) : valueY;
+            latestX = valueX
+            latestY = valueY
+            transform(valueX, valueY);
+        })
+        $area.mouseout(function(){
+            transform(0,0,300)
+            latestX = 0;
+            latestY = 0;
         })
     })
 

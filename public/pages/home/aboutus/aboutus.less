@@ -1,13 +1,11 @@
 
 @import '../../../resource/less/common.less';
 #aboutus{
-
     text-align: center;
 	.us{
 	    margin: 0 auto;
 	    display: inline-block;
 	    position: relative;
-
         &.show .one{
         	opacity: 1;
         }
@@ -66,4 +64,16 @@
 	    	width: 100%;
 	    }
 	}
+
+	.responsive(767px;{
+		.one{
+			width: 100px;
+			height: 30px;
+			padding-top: 150px; 
+		}
+		.line{
+			top: 150px;
+		}
+
+	});
 }

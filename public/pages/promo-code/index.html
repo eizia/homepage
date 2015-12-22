@@ -4,55 +4,58 @@
     <meta charset="UTF-8">
     <title>We did not forget you. promo code from usecubes.</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-</head>
-<body>
-	<style>
 
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		img{
+			border: none;
+		}
 		a{
 			text-decoration: none;
 			color:#499709;
 		}
 		table{
-			width: 100%;
+			width: 600px;
 		    font-family: "Myriad Set Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
     		font-weight: 200;
 			text-align: center;
 			line-height: 150%;
 			font-size: 18px;
 		}
-		.line{
-			vertical-align: middle;
-			height: 4px;
-		}
-		.line-content{
-			display: inline-block;
-			width: 100%;
-			height: 4px;
-			background:#58A519;
-		}
 		.app{
 
-		}
-		.app-td{
 		}
 		.app-content{
 			color:#499709;
 			display: inline-block;
 			line-height: 80px;
 		}
-		.app-content .title{
-			font-size: 40px;
+		.app-content img{
+			display: inline-block;
+			width: 600px;
+			height: 130px;
 		}
+		@media (max-width: 2560px) {
+		  .app-content img {
+		  	width: 100% !important;
+		  	height: 130px !important;
+		  	height: auto !important;
+		  }
+		}
+
 
 		.header-content{
 			font-size: 16px;
 			color: #888;
 		}
-		.dot{
+		.line{
 			vertical-align: middle;
 			height: 60px;
 		}
-		.dot-content{
+		.line-content{
 			border-radius: 100px;
 			display: inline-block;
 			min-width: 300px;
@@ -89,6 +92,13 @@
 			width: 128px;
 			height: 128px;
 		}
+
+		@media (max-width: 2560px) {
+		  .icon img {
+			width: 128px !important;
+			height: 128px !important;
+		  }
+		}
 		.thanks-content{
 			color:#000;
 		}
@@ -111,17 +121,24 @@
 			width: 80px;
 			height: 25px;
 		}
+		@media (max-width: 2560px) {
+		  .footer img {
+			width: 80px !important;
+			height: 25px !important;
+		  }
+		}
 		.gap{
 			height: 20px;
 		}
 	</style>
+</head>
+<body>
 	<table>
 		<tbody>
-			<tr class="line"><td><span class="line-content"></span></td></tr>
 			<tr class="app">
 				<td class="app-td">
 					<span class="app-content">
-						<span class="title">Thank You !</span>
+						<img  width="600px" height="130px" src="http://usecubes.com/source/ui-site/4.2.8/image/bg.jpg">
 					</span>
 				</td>
 			</tr>
@@ -130,15 +147,15 @@
 					<span class="header-content">
 						usecubes app release now.
 						<br/>
-						easily and convenient to build your cubes.
+						just touching, build your cube world.
 					</span>
 				</td>
 			</tr>
-			<tr class="dot"><td><span class="dot-content"></span></td></tr>
+			<tr class="line"><td><span class="line-content"></span></td></tr>
 			<tr class="icon">
 				<td>
 					<a href="https://itunes.apple.com/us/app/usecubes/id1065713205?ls=1&mt=8">
-						<img src="app-icon.png" />
+						<img width="128px" height="128px" src="http://usecubes.com/source/ui-site/4.2.8/image/app-icon.jpg" />
 					</a>
 				</td>
 			</tr>
@@ -158,7 +175,7 @@
 					</span>
 				</td>
 			</tr>
-			<tr class="dot"><td><span class="dot-content"></span></td></tr>
+			<tr class="line"><td><span class="line-content"></span></td></tr>
 			<tr >
 				<td>
 					<span class="gift-content">
@@ -168,7 +185,7 @@
 			</tr>
 			<tr class="footer">
 				<td>
-					<img src="http://usecubes.com/source/ui-single/dev/img/logo-top.png">
+					<img  width="80px" height="25px" src="http://usecubes.com/source/ui-single/4.2.8/img/logo-top.png">
 					<br/>
 					The most important is that you stay with us forever. Thanks. 
 				</td>

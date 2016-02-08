@@ -3,10 +3,34 @@
 @import '../../resource/less/iconfont.less';
 @fontColor:#81849D;
 
+.responsive(@maxWidth; @rules) {
+    @media only screen and (max-width: @maxWidth) {
+        @rules();
+    }
+}
+
 body {
     font-family: 'hanyi';
     display: block;
 }
+
+video::-webkit-media-controls {
+    display:none !important;
+}
+
+.responsive(767px,{
+    html{
+        background-color: #fff;
+        .linear-gradient(90deg;#898893,#e7e8e7);
+    }
+
+    video{
+        display: none;
+    }
+    video.exit{
+        display: block!important;
+    }
+});
 
 .gCover{
 

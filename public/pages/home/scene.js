@@ -1,10 +1,13 @@
 define(['when'], function(when) {
 
+    var userAgent = window.navigator.userAgent;
+
 	var video = {
 		enter : document.querySelector('.mainVideo.enter'),
 		landing : document.querySelector('.mainVideo.landing'),
 		exit : document.querySelector('.mainVideo.exit')
 	}
+
 
     var current = 'logo';
 
@@ -50,19 +53,33 @@ define(['when'], function(when) {
     var onloadDefer = when.defer();
 
     videoNames.forEach(function(name){
-        //先把视频全部播放一遍，通过ended判定视频全部完整缓存。只设置autoplay，获取不到视频完整缓冲好的事件。
-        video[name].addEventListener('ended', function(){
-            loadedVideos++;
-            if(loadedVideos === videoNames.length){
-                console.info("all videos loaded")
-                onloadDefer.resolve();
-            }
-        });
-    })
+
+
+        if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
+           // iPad or iPhone
+            onloadDefer.resolve();
+        }else{
+            // video[name].addEventListener('loadedmetadata', function() {
+            //   this.currentTime=0.01;
+            //   this.play();
+            //  });
+
+            //先把视频全部播放一遍，通过ended判定视频全部完整缓存。只设置autoplay，获取不到视频完整缓冲好的事件。
+            video[name].addEventListener('ended', function(){
+                loadedVideos++;
+                if(loadedVideos === videoNames.length){
+                    console.info("all videos loaded")
+                    onloadDefer.resolve();
+                }
+            });            
+        }
+
+    });
 
 
     function play(name){
-		var defer = when.defer();
+
+        var defer = when.defer();
 
 
         function run(){
@@ -74,18 +91,23 @@ define(['when'], function(when) {
             video[name].play();
         }
 
+        if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
+           // iPad or iPhone
+            // onloadDefer.resolve();
+            return true;
+        }else{
+            video[name].onended = defer.resolve;
 
-    	video[name].onended = defer.resolve;
-
-        if(video[name].currentTime !== 0){
-            video[name].currentTime = 0;
-            video[name].onseeked = run;
+            if(video[name].currentTime !== 0){
+                video[name].currentTime = 0;
+                video[name].onseeked = run;
+            }
+            else{
+                run();
+            }
         }
-        else{
-            run();
-        }
 
-		return defer.promise;
+        return defer.promise;
     }
 
 

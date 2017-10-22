@@ -3,6 +3,7 @@ define(['../scene', '../title', 'less!./product.less'], function(Scene, Title) {
     var $allProduct = $("#product .cardContainer");
     var $product = $("#product")
     var $topic = $product.find(".topic");
+    var $cover = $(".lightCover")
 
     $allProduct.each(function(index, elem){
         var $elem = $(elem);
@@ -72,6 +73,9 @@ define(['../scene', '../title', 'less!./product.less'], function(Scene, Title) {
             setTimeout(function(){
                 $topic.addClass("show");
             }, 400)
+            setTimeout(function(){
+                $cover.addClass("show");
+            }, 800)
             Title.set([
                 {text: '产品'}
             ]);
@@ -81,6 +85,7 @@ define(['../scene', '../title', 'less!./product.less'], function(Scene, Title) {
         productExitHandler:function(){
             $allProduct.removeClass("show");
             $topic.removeClass("show")
+            $cover.removeClass("show")
             setTimeout(function(){
                 $product.removeClass("show")
             }, 500)

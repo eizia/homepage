@@ -8,6 +8,7 @@ define(['when', './product/main', './case/main', './customer/main', './aboutus/m
         homeHandler : function() {
             $('#home').addClass('show');
             //mainVideoBg控制视频
+            $('.logoSpace').addClass('locate');
             Title.set([]);
             return Scene.set('home')
                 .progress(function(){
@@ -20,7 +21,7 @@ define(['when', './product/main', './case/main', './customer/main', './aboutus/m
                 });
         },
         homeExitHandler :function(){
-            $('.logo,.menu').removeClass('locate');
+            $('.logo,.menu,.logoSpace').removeClass('locate');
             return when().delay(800).then(function(){
                 $('#home').removeClass('show');
             })

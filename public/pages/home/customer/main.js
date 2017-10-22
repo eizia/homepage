@@ -2,6 +2,7 @@ define(['when', '../scene', '../title', 'less!./customer.less'], function(when, 
     var $customer = $("#customer")
     var $allCustomers = $(".customer")
     var $topic = $customer.find(".topic");
+    var $cover = $(".lightCover")
     return {
         customerHandler: function() {
             $customer.addClass("show")
@@ -9,6 +10,9 @@ define(['when', '../scene', '../title', 'less!./customer.less'], function(when, 
             setTimeout(function(){
                 $topic.addClass("show");
             }, 400)
+            setTimeout(function(){
+                $cover.addClass("show");
+            }, 800)
             Title.set([
                 {text: '客户'}
             ]);
@@ -18,6 +22,7 @@ define(['when', '../scene', '../title', 'less!./customer.less'], function(when, 
         customerExitHandler:function(){
             $allCustomers.removeClass("show");
             $topic.removeClass("show")
+            $cover.removeClass("show")
             return when().delay(300).then(function(){
             	setTimeout(function(){
             		$customer.removeClass("show");

@@ -104,12 +104,22 @@ define(['when'], function(when) {
         return defer.promise;
     }
 
-
+    var loadingInterval;
+    var loadingIndex = 0;
+    var loadingText = ["···", "··", "·"]
     $(".gCover").click(function() {
 
         videoNames.forEach(function(name) {
             video[name].play();
         });
+
+        $enter = $(".gCover .enter").addClass("loading");
+        $enter.text(loadingText[loadingIndex % 3]);
+        clearInterval(loadingInterval);
+        loadingInterval = setInterval(function(){
+            loadingIndex++;
+            $enter.text(loadingText[loadingIndex % 3]);
+        }, 500)
 
     })
 

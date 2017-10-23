@@ -3,7 +3,10 @@ define(['../scene', '../title', 'less!./product.less'], function(Scene, Title) {
     var $allProduct = $("#product .cardContainer");
     var $product = $("#product")
     var $topic = $product.find(".topic");
-    var $cover = $(".lightCover")
+    var $cover = $(".lightCover");
+
+    var origin = {}
+    var current = {}
 
     $allProduct.each(function(index, elem){
         var $elem = $(elem);
@@ -63,12 +66,46 @@ define(['../scene', '../title', 'less!./product.less'], function(Scene, Title) {
             latestX = 0;
             latestY = 0;
         })
+        if (window.DeviceOrientationEvent && window.outerWidth < 768) {
+            window.addEventListener("deviceorientation", function(event) {
+
+                if(!((origin.time + 100) < new Date().getTime())){
+                    if (origin.beta === undefined) {
+                        origin.beta = event.beta;
+                    }
+                    if (origin.gamma === undefined) {
+                        origin.gamma = event.gamma;
+                    }
+                    if(current.time === undefined){
+                        origin.time = new Date().getTime()
+                    }
+                    current.beta = event.beta - origin.beta;
+                    current.gamma = event.gamma - origin.gamma;
+
+                    current.beta = current.beta % 180
+                    current.gamma = current.gamma % 90
+                    
+                    transform(width * current.gamma / 10000, height * current.beta / 10000, 0);                
+                }
+
+            })
+
+            // 支持
+        } else {
+            // 不支持
+        }
+
+
     })
+
 
     return {
         productHandler: function() {
             $product.addClass("show")
             $allProduct.addClass("show");
+
+            origin = {};
+            current = {};
 
             setTimeout(function(){
                 $topic.addClass("show");

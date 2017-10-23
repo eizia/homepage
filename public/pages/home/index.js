@@ -2,47 +2,46 @@ define(['when', './product/main', './case/main', './customer/main', './aboutus/m
 
 
     var currentPage;
-    var currentModule;    
+    var currentModule;
 
     var Home = {
-        homeHandler : function() {
+        homeHandler: function() {
             $('#home').addClass('show');
             //mainVideoBg控制视频
             $('.logoSpace').addClass('locate');
             Title.set([]);
             return Scene.set('home')
-                .progress(function(){
+                .progress(function() {
                     //start
 
                 })
-                .then(function(){
+                .then(function() {
                     $('.logo,.menu').addClass('locate');
                     //done
                 });
         },
-        homeExitHandler :function(){
+        homeExitHandler: function() {
             $('.logo,.menu,.logoSpace').removeClass('locate');
-            return when().delay(800).then(function(){
+            return when().delay(800).then(function() {
                 $('#home').removeClass('show');
             })
         }
     };
 
-    function proxy(page){
+    function proxy(page) {
         var arg = Array.prototype.slice.call(arguments);
         var module = this;
         arg.shift();
         //run exit handler fisrt "xxxExitHandler"
-        when(currentModule && currentModule[currentPage+'ExitHandler'] && currentModule[currentPage+'ExitHandler']())
-            .then(function(){
+        when(currentModule && currentModule[currentPage + 'ExitHandler'] && currentModule[currentPage + 'ExitHandler']())
+            .then(function() {
                 //and then run page handler  "xxxHandler"
-                module[page+'Handler'].apply(module, arg).then(function(){
+                module[page + 'Handler'].apply(module, arg).then(function() {
                     currentPage = page;
                     currentModule = module;
                 });
             })
     }
-
 
 
     var router = Router({
@@ -55,7 +54,7 @@ define(['when', './product/main', './case/main', './customer/main', './aboutus/m
     });
 
     when.all([Scene.loaded, when().delay(1000)])
-        .then(function(){
+        .then(function() {
             router.init("/");
             $('.gCover').addClass('hide');
             $('nav.global').addClass('show');

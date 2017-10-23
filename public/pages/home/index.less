@@ -50,6 +50,27 @@ video::-webkit-media-controls {
         margin-left: -19%;
         margin-top: -7%;
     }
+    .enter{
+        width: 38%; 
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -19%;
+        margin-top: 20%;
+        color: #fff;
+        border-radius: 100px;
+        border: 1px solid #fff;
+        padding: 10px 0;
+        text-align: center;
+        font-size: 24px;
+        opacity: 0;
+    }
+
+    .responsive(767px,{
+        .enter{
+            opacity: 1;
+        }
+    });
 }
 
 nav.global{

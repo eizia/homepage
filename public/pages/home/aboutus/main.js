@@ -11,30 +11,30 @@ define(['when', '../scene', '../title', 'less!./aboutus.less'], function(when, S
             $us.addClass("show")
             $line.addClass("show")
             $contact.addClass("show")
-            setTimeout(function(){
+            setTimeout(function() {
                 $topic.addClass("show");
             }, 400)
-            setTimeout(function(){
+            setTimeout(function() {
                 $cover.addClass("show");
             }, 800)
-            Title.set([
-                {text: '我们'}
-            ]);
+            Title.set([{
+                text: '我们'
+            }]);
             return Scene.set("channel")
 
         },
-        aboutusExitHandler:function(){
-
+        aboutusExitHandler: function() {
             $us.removeClass("show")
             $line.removeClass("show")
             $contact.removeClass("show")
             $topic.removeClass("show")
             $cover.removeClass("show")
-            return when().delay(300).then(function(){
-            	setTimeout(function(){
-            		$aboutus.removeClass("show");
-            	}, 300)
-            })
+
+            setTimeout(function() {
+                if (window.location.href.indexOf('#aboutus') < 0) {
+                    $aboutus.removeClass("show");
+                }
+            }, 600)
         }
     }
 })

@@ -22,9 +22,11 @@ define(['when', './product/main', './case/main', './customer/main', './aboutus/m
         },
         homeExitHandler: function() {
             $('.logo,.menu,.logoSpace').removeClass('locate');
-            return when().delay(800).then(function() {
-                $('#home').removeClass('show');
-            })
+            setTimeout(function() {
+                if (window.location.hash.length > 3) {
+                    $('#home').removeClass('show');
+                }
+            }, 800)
         }
     };
 
@@ -35,10 +37,11 @@ define(['when', './product/main', './case/main', './customer/main', './aboutus/m
         //run exit handler fisrt "xxxExitHandler"
         when(currentModule && currentModule[currentPage + 'ExitHandler'] && currentModule[currentPage + 'ExitHandler']())
             .then(function() {
+                currentPage = page;
+                currentModule = module;
                 //and then run page handler  "xxxHandler"
                 module[page + 'Handler'].apply(module, arg).then(function() {
-                    currentPage = page;
-                    currentModule = module;
+
                 });
             })
     }

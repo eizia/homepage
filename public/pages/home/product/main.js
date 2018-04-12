@@ -8,7 +8,7 @@ define(['../scene', '../title', 'less!./product.less'], function(Scene, Title) {
     var origin = {}
     var current = {}
 
-    $allProduct.each(function(index, elem){
+    $allProduct.each(function(index, elem) {
         var $elem = $(elem);
         var animating = false;
         var latestX = 0;
@@ -26,57 +26,57 @@ define(['../scene', '../title', 'less!./product.less'], function(Scene, Title) {
         var height = $area.height();
 
 
-        function transform(valueX, valueY, animation, fn){
+        function transform(valueX, valueY, animation, fn) {
             var duration = animation ? animation : 0;
             $bg.velocity('stop').velocity({
-                translateX : -valueX * 20 + "px",
-                translateY : -valueY * 20 + "px"
+                translateX: -valueX * 20 + "px",
+                translateY: -valueY * 20 + "px"
             }, duration, "ease-in-out")
             $light.velocity('stop').velocity({
-                translateX : -valueX * 400 + "px",
-                translateY : -valueY * 200 + "px"
+                translateX: -valueX * 400 + "px",
+                translateY: -valueY * 200 + "px"
             }, duration, "ease-in-out")
             $shadow.velocity('stop').velocity({
-                translateX : -valueX * 10 + "px",
-                translateY : -valueY * 10 + "px"
+                translateX: -valueX * 10 + "px",
+                translateY: -valueY * 10 + "px"
             }, duration, "ease-in-out")
             $float.velocity('stop').velocity({
-                translateX : valueX * 8 + "px",
-                translateY : valueY * 8 + "px"
+                translateX: valueX * 8 + "px",
+                translateY: valueY * 8 + "px"
             }, duration, "ease-in-out")
             $rotateXY.velocity('stop').velocity({
-                rotateY : valueX * 8 + "deg",
-                rotateX : -valueY * 8 + "deg"
+                rotateY: valueX * 8 + "deg",
+                rotateX: -valueY * 8 + "deg"
             }, duration, "ease-in-out", fn)
         }
 
 
-        $area.mousemove(function(event){
+        $area.mousemove(function(event) {
             var valueX = 2 * event.offsetX / width - 1
             var valueY = 2 * event.offsetY / height - 1
             //如果变化过大，缩小value的数值，避免跳动
-            valueX = Math.abs(valueX - latestX) > 0.3 ? ((valueX - latestX)*0.3 + latestX) : valueX;
-            valueY = Math.abs(valueY - latestY) > 0.3 ? ((valueY - latestY)*0.3 + latestY) : valueY;
+            valueX = Math.abs(valueX - latestX) > 0.3 ? ((valueX - latestX) * 0.3 + latestX) : valueX;
+            valueY = Math.abs(valueY - latestY) > 0.3 ? ((valueY - latestY) * 0.3 + latestY) : valueY;
             latestX = valueX
             latestY = valueY
             transform(valueX, valueY);
         })
-        $area.mouseout(function(){
-            transform(0,0,300)
+        $area.mouseout(function() {
+            transform(0, 0, 300)
             latestX = 0;
             latestY = 0;
         })
         if (window.DeviceOrientationEvent && window.outerWidth < 768) {
             window.addEventListener("deviceorientation", function(event) {
 
-                if(!((origin.time + 100) < new Date().getTime())){
+                if (!((origin.time + 100) < new Date().getTime())) {
                     if (origin.beta === undefined) {
                         origin.beta = event.beta;
                     }
                     if (origin.gamma === undefined) {
                         origin.gamma = event.gamma;
                     }
-                    if(current.time === undefined){
+                    if (current.time === undefined) {
                         origin.time = new Date().getTime()
                     }
                     current.beta = event.beta - origin.beta;
@@ -84,8 +84,8 @@ define(['../scene', '../title', 'less!./product.less'], function(Scene, Title) {
 
                     current.beta = current.beta % 180
                     current.gamma = current.gamma % 90
-                    
-                    transform(width * current.gamma / 10000, height * current.beta / 10000, 0);                
+
+                    transform(width * current.gamma / 10000, height * current.beta / 10000, 0);
                 }
 
             })
@@ -107,25 +107,26 @@ define(['../scene', '../title', 'less!./product.less'], function(Scene, Title) {
             origin = {};
             current = {};
 
-            setTimeout(function(){
+            setTimeout(function() {
                 $topic.addClass("show");
             }, 400)
-            setTimeout(function(){
+            setTimeout(function() {
                 $cover.addClass("show");
             }, 800)
-            Title.set([
-                {text: '产品'}
-            ]);
+            Title.set([{
+                text: '案例'
+            }]);
             return Scene.set("channel")
 
         },
-        productExitHandler:function(){
+        productExitHandler: function() {
             $allProduct.removeClass("show");
             $topic.removeClass("show")
             $cover.removeClass("show")
-            setTimeout(function(){
-                $product.removeClass("show")
-            }, 500)
+
+            if (window.location.href.indexOf('#product') < 0) {
+                $product.removeClass("show");
+            }
         }
     }
 })
